@@ -1,8 +1,10 @@
 # Prompt for email
 $email = Read-Host "Enter the email to use for SSH and Git configuration"
 
-if ((Read-Host "Configure global Git settings? (y/n)").Trim().ToLower() -eq 'y') {
+if ((Read-Host "Set ExecutionPolicy for this process? (y/n)").Trim().ToLower() -eq 'y') {
     Set-ExecutionPolicy -Scope Process -ExecutionPolicy Unrestricted
+}
+if ((Read-Host "Set Timezone? (y/n)").Trim().ToLower() -eq 'y') {
     Set-TimeZone -Name "W. Europe Standard Time"
 }
 
@@ -21,7 +23,7 @@ if ((Read-Host "Install applications with winget? (y/n)").Trim().ToLower() -eq '
         "AgileBits.1Password",
         "SlackTechnologies.Slack",
         "Vivaldi.Vivaldi",
-        "Microsoft.VisualStudio.2022.Professional",
+        
         "Docker.DockerDesktop",
         "Microsoft.WSL",
         "Canonical.Ubuntu",
@@ -30,10 +32,21 @@ if ((Read-Host "Install applications with winget? (y/n)").Trim().ToLower() -eq '
     )
 
     foreach ($app in $apps) {
-        Write-Output "Installing $app..."
-        winget install --id=$app --silent --accept-package-agreements --accept-source-agreements
+        if ((Read-Host "Install $app? (y/n)").Trim().ToLower() -eq 'y') {
+            Write-Output "Installing $app..."
+            winget install --id=$app --silent --accept-package-agreements --accept-source-agreements
+        } else {
+            Write-Output "Skipping $app."
+        }
     }
     Write-Output "All apps installed!"
+
+    if ((Read-Host "Install Visual Studio 2022 with workloads? (y/n)").Trim().ToLower() -eq 'y') {
+    $vsEdition = Read-Host "Choose edition: (1) Professional or (2) Community [1/2]"
+    $vsId = if ($vsEdition -eq '2') { 'Microsoft.VisualStudio.2022.Community' } else { 'Microsoft.VisualStudio.2022.Professional' }
+
+   winget install --id $vsId --accept-package-agreements --accept-source-agreements --override "--add Microsoft.VisualStudio.Workload.ManagedDesktop --add Microsoft.VisualStudio.Workload.NetWeb --includeRecommended --quiet --wait"
+}
 }
 
 if ((Read-Host "Install WSL with Ubuntu? (y/n)").Trim().ToLower() -eq 'y') {
@@ -49,6 +62,7 @@ if ((Read-Host "Generate SSH key and start ssh-agent? (y/n)").Trim().ToLower() -
     Get-Service -Name ssh-agent | Set-Service -StartupType Automatic
     Start-Service ssh-agent
     ssh-add "$sshPath\id_ed25519"
+    notepad "$sshPath\id_ed25519.pub"
 }
 
 if ((Read-Host "Install PowerShell modules and fonts? (y/n)").Trim().ToLower() -eq 'y') {
@@ -98,18 +112,26 @@ Set-PSReadLineOption -EditMode Windows
     Copy-Item "$tempPath\Aliases.ps1" "$profilePath" -Force
 }
 
-if ((Read-Host "Apply FiraMono font to Windows Terminal profile? (y/n)").Trim().ToLower() -eq 'y') {
+if ((Read-Host "Apply defaults to Windows Terminal? (y/n)").Trim().ToLower() -eq 'y') {
     $wtSettingsPath = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
     if (Test-Path $wtSettingsPath) {
         $settings = Get-Content $wtSettingsPath -Raw | ConvertFrom-Json
         foreach ($profile in $settings.profiles.list) {
             if ($profile.name -match "PowerShell") {
-                $profile.font = @{ face = "FiraMono Nerd Font" }
+                $profile | Add-Member -MemberType NoteProperty -Name fontFace -Value "FiraMono Nerd Font" -Force
             }
         }
+
+        # Set default profile to PowerShell 7 if present
+        $pwshProfile = $settings.profiles.list | Where-Object { $_.commandline -like "*pwsh.exe" }
+        if ($pwshProfile) {
+            $settings.defaultProfile = $pwshProfile.guid
+        }
+
         $settings | ConvertTo-Json -Depth 32 | Set-Content $wtSettingsPath -Force
     }
 }
+
 
 if ((Read-Host "Configure global Git settings? (y/n)").Trim().ToLower() -eq 'y') {
     git config --global push.autoSetupRemote always
