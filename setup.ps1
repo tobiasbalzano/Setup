@@ -86,10 +86,9 @@ Set-PSReadLineOption -PredictionSource History
 Set-PSReadLineOption -PredictionViewStyle ListView
 Set-PSReadLineOption -EditMode Windows
 
-\$env:POSH_GIT_ENABLED = \$true
+`$env:POSH_GIT_ENABLED` = `$true`
 
-\$aliasPath = `"$profilePath`"
-if (Test-Path \$aliasPath) { . \$aliasPath }
+. `$PSScriptRoot\Aliases.ps1`
 "@
 
     if (-not (Test-Path "$tempPath\.git")) {
