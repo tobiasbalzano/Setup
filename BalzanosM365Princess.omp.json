@@ -1,0 +1,73 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "properties": {
+            "macos": "mac",
+            "template": " {{ if .WSL }}WSL at {{ end }}{{.Icon}}  "
+          },
+          "leading_diamond": "\ue0b6",
+          "foreground": "#ffffff",
+          "background": "#9A348E",
+          "type": "os",
+          "style": "diamond"
+        },
+        {
+          "properties": {
+            "folder_icon": "\uf115",
+            "folder_separator_icon": " \uf054 ",
+            "home_icon": "\uf7db",
+            "style": "agnoster_full",
+            "template": " {{ .Path }} "
+          },
+          "foreground": "#ffffff",
+          "powerline_symbol": "\ue0b0",
+          "background": "#DA627D",
+          "type": "path",
+          "style": "powerline"
+        },
+        {
+          "properties": {
+            "branch_icon": "\ue725 ",
+            "fetch_stash_count": true,
+            "fetch_status": false,
+            "fetch_upstream_icon": true,
+            "template": " {{ .UpstreamIcon }}{{ .HEAD }}{{ .BranchStatus }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}<#ef5350> \uf046 {{ .Staging.String }}</>{{ end }} "
+          },
+          "foreground": "#ffffff",
+          "powerline_symbol": "\ue0b0",
+          "background": "#FCA17D",
+          "type": "git",
+          "style": "powerline"
+        },
+        {
+          "properties": {
+            "template": " \ue718 {{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }} "
+          },
+          "foreground": "#ffffff",
+          "powerline_symbol": "\ue0b0",
+          "background": "#86BBD8",
+          "type": "node",
+          "style": "powerline"
+        },
+        {
+          "properties": {
+            "template": " ♥ {{ .CurrentDate | date .Format }} ",
+            "time_format": "15:04"
+          },
+          "trailing_diamond": "\ue0b0",
+          "foreground": "#ffffff",
+          "background": "#33658A",
+          "type": "time",
+          "style": "diamond"
+        }
+      ]
+    }
+  ],
+  "version": 3,
+  "final_space": true
+}
