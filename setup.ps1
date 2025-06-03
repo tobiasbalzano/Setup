@@ -43,6 +43,8 @@ if ((Read-Host "Install applications with winget? (y/n)").Trim().ToLower() -eq '
 
     Write-Output "All apps installed!"
 
+
+
     if ((Read-Host "Install Visual Studio 2022 with workloads? (y/n)").Trim().ToLower() -eq 'y') {
         $vsEdition = Read-Host "Choose edition: (1) Professional or (2) Community [1/2]"
         $vsId = if ($vsEdition -eq '2') { 'Microsoft.VisualStudio.2022.Community' } else { 'Microsoft.VisualStudio.2022.Professional' }
@@ -67,6 +69,11 @@ if ((Read-Host "Install applications with winget? (y/n)").Trim().ToLower() -eq '
             Write-Output "Installed .NET SDK version $version"
             $version++
         }
+    }
+    
+    if ((Read-Host "Install JetBrains ReSharper? (y/n)").Trim().ToLower() -eq 'y') {
+        Write-Output "Installing JetBrains.ReSharper..."
+        winget install --id JetBrains.ReSharper --silent --accept-package-agreements --accept-source-agreements
     }
 }
 
