@@ -20,6 +20,7 @@ if ((Read-Host "Install applications with winget? (y/n)").Trim().ToLower() -eq '
         "Git.Git",
         "GitHub.cli",
         "JanDeDobbeleer.OhMyPosh",
+        "7zip.7zip",
         "Microsoft.VisualStudioCode",
         "AgileBits.1Password",
         "SlackTechnologies.Slack",
