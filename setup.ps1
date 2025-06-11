@@ -25,6 +25,8 @@ if ((Read-Host "Install applications with winget? (y/n)").Trim().ToLower() -eq '
         "AgileBits.1Password",
         "SlackTechnologies.Slack",
         "Vivaldi.Vivaldi",
+        "Microsoft.SQLServerManagementStudio.21",
+        "Microsoft.SQLServerManagementStudio",
         "Docker.DockerDesktop",
         "Microsoft.WSL",
         "Microsoft.Powershell",
