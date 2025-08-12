@@ -1,0 +1,145 @@
+{
+    "security.workspace.trust.untrustedFiles": "open",
+    "microsoft-sovereign-cloud.environment": "",
+    "database-client.autoSync": true,
+    "markdown-pdf.breaks": true,
+    "markdown-pdf.displayHeaderFooter": false,
+    "workbench.startupEditor": "none",
+    "git.openRepositoryInParentFolders": "always",
+    "eppz-code.disableAnalytics": true,
+    "dotnet.automaticallySyncWithActiveItem": true,
+    "dotnet.testWindow.enableTestExplorerDiff": true,
+    "csharpextensions.useFileScopedNamespace": true,
+    "csharpextensions.useThisForCtorAssignments": false,
+    "editor.formatOnSave": true,
+    "chat.agent.enabled": false,
+    "chat.commandCenter.enabled": false,
+    "editor.fontFamily": "FiraCode Nerd Font Propo",
+    "editor.fontLigatures": true,
+    "workbench.settings.applyToAllProfiles": [
+        "editor.fontFamily"
+    ],
+    "editor.formatOnType": true,
+    "NugetGallery.credentialProviderFolder": "{user-profile}/.nuget/plugins/netcore/CredentialProvider.Microsoft",
+    "NugetGallery.skipRestore": "false",
+    "NugetGallery.sources": [
+        "{\"name\":\"nuget.org\",\"url\":\"https://api.nuget.org/v3/index.json\"}"
+    ],
+    "telemetry.telemetryLevel": "off",
+    "dotnetAcquisitionExtension.enableTelemetry": false,
+    "telemetry.editStats.enabled": false,
+    "telemetry.feedback.enabled": false
+
+  // --- Core editor look ---
+  "workbench.colorCustomizations": {
+    // Base UI
+    "editor.background": "#181B19",
+  "editor.foreground": "#E6E6E6",
+  "editorLineNumber.foreground": "#5B6460",
+  "editorLineNumber.activeForeground": "#9CDCFE",
+  "editorCursor.foreground": "#9CDCFE",
+  "editor.selectionBackground": "#2C537F",
+  "editor.inactiveSelectionBackground": "#2C537F44",
+  "editor.lineHighlightBackground": "#1E221F",
+  "editorWhitespace.foreground": "#4A514D",
+  "editorIndentGuide.background": "#313C37",
+  "editorIndentGuide.activeBackground": "#3F4D47",
+
+  "sideBar.background": "#151815",
+  "sideBar.border": "#222723",
+  "activityBar.background": "#151815",
+  "activityBar.border": "#222723",
+  "statusBar.background": "#121512",
+  "statusBar.border": "#222723",
+
+  "tab.activeBackground": "#1E221F",
+  "tab.inactiveBackground": "#151815",
+  "tab.activeForeground": "#E6E6E6",
+  "tab.inactiveForeground": "#B5BBB8",
+  "tab.border": "#222723",
+
+  "menu.background": "#181B19",
+  "dropdown.background": "#181B19",
+  "list.activeSelectionBackground": "#1E221F",
+  "list.hoverBackground": "#1A1E1B",
+  "focusBorder": "#3a4a63",
+  "panel.border": "#222723",
+  
+    // 5-level bracket colors (high-contrast, mellow saturation)
+    "editorBracketHighlight.foreground1": "#6FB6C9", // cyan
+    "editorBracketHighlight.foreground2": "#C9976F", // orange
+    "editorBracketHighlight.foreground3": "#9E6FC9", // violet
+    "editorBracketHighlight.foreground4": "#6FC97A", // green
+    "editorBracketHighlight.foreground5": "#C96F7A", // red
+    "editorBracketHighlight.foreground6": "#C96F7A",
+    "editorBracketMatch.background": "#FFFFFF1F",
+    "editorBracketMatch.border": "#E6E6E6",
+    "editorBracketHighlight.unexpectedBracket.foreground": "#F48771"
+  },
+
+  // --- Functional editor options ---
+  "editor.bracketPairColorization.enabled": true,
+  "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+  "editor.guides.bracketPairs": "active",
+  "editor.guides.bracketPairsHorizontal": "active",
+
+  // --- Semantic highlighting (C#) ---
+  "editor.semanticHighlighting.enabled": true,
+  "csharp.semanticHighlighting.enabled": true,
+
+  // --- Semantic token styling (C#-focused, high separation) ---
+  "editor.semanticTokenColorCustomizations": {
+    "rules": {
+      // METHODS
+      "method":            { "foreground": "#C8C97F" },                 // instance
+      "method.static":     { "foreground": "#9E6FC9", "italic": true },
+      "method.async":      { "foreground": "#9E6FC9", "underline": true },
+      "method.extension":  { "foreground": "#C96F7A", "underline": true }, // applied if LS exposes 'extension'
+
+      // PROPERTIES
+      "property":          { "foreground": "#6FB6C9", "bold": true },
+
+      // FIELDS
+      "field":                 { "foreground": "#C9976F" },
+      "field.readonly":        { "foreground": "#C9976F", "italic": true },
+      "field.static":          { "foreground": "#C9976F", "bold": true },
+      "field.static.readonly": { "foreground": "#C9976F", "bold": true, "italic": true },
+
+      // LOCALS & PARAMS
+      "variable":          { "foreground": "#6FC97A" },                 // locals
+      "variable.readonly": { "foreground": "#6FC97A", "italic": true },
+      "parameter":         { "foreground": "#E6E6E6", "italic": true },
+
+      // CONSTANTS & ENUM MEMBERS
+      "variable.constant": { "foreground": "#FFD479", "bold": true },   // if emitted
+      "enumMember":        { "foreground": "#FFD479" },
+
+      // EVENTS
+      "event":             { "foreground": "#6FB6C9", "underline": true },
+      "event.static":      { "foreground": "#6FB6C9", "underline": true, "bold": true },
+
+      // TYPES (explicit split requested)
+      "class":             { "foreground": "#6FB6C9", "bold": true },
+      "struct":            { "foreground": "#6FC97A", "bold": true },
+      "class.record":      { "foreground": "#C9976F", "bold": true, "italic": true }, // records
+      "type.record":       { "foreground": "#C9976F", "bold": true, "italic": true }, // safety net
+      "interface":         { "foreground": "#9E6FC9", "italic": true },
+      "typeParameter":     { "foreground": "#E6E6E6", "italic": true },
+      "namespace":         { "foreground": "#B8C3CF" }
+    }
+  },
+
+  // --- TextMate fallback (used only when semantic tokens missing) ---
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      { "scope": "variable.parameter",          "settings": { "foreground": "#E6E6E6", "fontStyle": "italic" } },
+      { "scope": "variable.other.property",     "settings": { "foreground": "#6FB6C9", "fontStyle": "bold" } },
+      { "scope": ["entity.name.function.member","entity.name.function"], "settings": { "foreground": "#C8C97F" } },
+      { "scope": ["constant.other","constant.language"], "settings": { "foreground": "#FFD479", "fontStyle": "bold" } },
+      { "scope": "entity.name.type.class",      "settings": { "foreground": "#6FB6C9", "fontStyle": "bold" } },
+      { "scope": "storage.type.struct",         "settings": { "foreground": "#6FC97A", "fontStyle": "bold" } },
+      { "scope": ["storage.type.record","keyword.declaration.record","keyword.other.record"],
+        "settings": { "foreground": "#C9976F", "fontStyle": "bold italic" } }
+    ]
+  }
+}
