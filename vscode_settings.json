@@ -16,11 +16,14 @@
   "chat.commandCenter.enabled": false,
   "editor.fontFamily": "FiraCode Nerd Font Propo",
   "editor.fontLigatures": true,
+  "workbench.tree.indent" : 24,
   "workbench.settings.applyToAllProfiles": [
     "editor.fontFamily",
     "editor.fontLigatures"
   ],
   "editor.formatOnType": true,
+  "editor.parameterHints.enabled": true,
+  "editor.inlayHints.enabled": "on",
   "NugetGallery.credentialProviderFolder": "{user-profile}/.nuget/plugins/netcore/CredentialProvider.Microsoft",
   "NugetGallery.skipRestore": "false",
   "NugetGallery.sources": [
@@ -334,5 +337,6 @@
         } // distinct gold, italic
       }
     ]
-  }
+  },
+  "workbench.iconTheme": "vscode-icons"
 }
