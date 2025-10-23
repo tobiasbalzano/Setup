@@ -30,7 +30,8 @@ if ((Read-Host "Install applications with winget? (y/n)").Trim().ToLower() -eq '
         "Docker.DockerDesktop",
         "Microsoft.WSL",
         "Microsoft.Powershell",
-        "TidalMusicAs.Tidal"
+        "TidalMusicAs.Tidal",
+        "Doist.Todoist"
     )
 
     foreach ($app in $apps) {
